@@ -84,6 +84,7 @@ function configure_karbor_api {
 }
 
 function create_karbor_providers_dir{
+    echo $KARBOR_CONF_DIR
     sudo rm -rf $KARBOR_CONF_DIR/providers.d
     sudo mkdir -p $KARBOR_CONF_DIR/providers.d
     sudo chown `whoami` $KARBOR_CONF_DIR/providers.d
