@@ -83,7 +83,7 @@ function configure_karbor_api {
     fi
 }
 
-function create_karbor_providers_dir{
+function create_karbor_providers_dir {
     echo $KARBOR_CONF_DIR
     sudo rm -rf $KARBOR_CONF_DIR/providers.d
     sudo mkdir -p $KARBOR_CONF_DIR/providers.d
