@@ -41,7 +41,9 @@ function configure_karbor_api {
         cp $KARBOR_DIR/etc/karbor.conf $KARBOR_API_CONF
         cp $KARBOR_DIR/etc/api-paste.ini $KARBOR_CONF_DIR
         cp $KARBOR_DIR/etc/policy.json $KARBOR_CONF_DIR
-        cp $KARBOR_DIR/etc/providers.d/openstack-infra.conf $KARBOR_CONF_DIR
+        
+        create_karbor_providers_dir
+        cp $KARBOR_DIR/etc/providers.d/openstack-infra.conf $KARBOR_CONF_DIR/providers.d/
 
         iniset $KARBOR_API_CONF DEFAULT debug $ENABLE_DEBUG_LOG_LEVEL
         iniset $KARBOR_API_CONF DEFAULT use_syslog $SYSLOG
@@ -79,6 +81,12 @@ function configure_karbor_api {
             iniset $KARBOR_API_CONF DEFAULT auth_strategy noauth
         fi
     fi
+}
+
+function create_karbor_providers_dir{
+    sudo rm -rf $KARBOR_CONF_DIR/providers.d
+    sudo mkdir -p $KARBOR_CONF_DIR/providers.d
+    sudo chown `whoami` $KARBOR_CONF_DIR/providers.d
 }
 
 function create_karbor_cache_dir {
