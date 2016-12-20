@@ -41,7 +41,7 @@ function configure_karbor_api {
         cp $KARBOR_DIR/etc/karbor.conf $KARBOR_API_CONF
         cp $KARBOR_DIR/etc/api-paste.ini $KARBOR_CONF_DIR
         cp $KARBOR_DIR/etc/policy.json $KARBOR_CONF_DIR
-        cp -R $KARBOR_DIR/etc/providers.d/openstack-infra.conf $KARBOR_CONF_DIR
+        cp $KARBOR_DIR/etc/providers.d/openstack-infra.conf $KARBOR_CONF_DIR
 
         iniset $KARBOR_API_CONF DEFAULT debug $ENABLE_DEBUG_LOG_LEVEL
         iniset $KARBOR_API_CONF DEFAULT use_syslog $SYSLOG
